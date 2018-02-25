@@ -1,0 +1,5 @@
+mit_license: MIT License
+menu.toggle_nav: Toggle navigation
+menu.homepage: Homepage
+menu.choose_language: Choose language
+help.app_description: "This is a <strong>test application</strong> built in the Symfony Framework."
