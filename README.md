@@ -5,13 +5,13 @@ In addition this is example project composed from of symfony flex with webpack a
 
  ## Requirements
  
- . PHP 7.1
- . composer
- . npm
- . yarn
+* PHP 7.1
+* composer
+* npm
+* yarn
  
  ## Installation
- 
+
  ```bash
 git clone https://github.com/TheRatG/certificationy-web.git
 cd certificationy-web
@@ -24,4 +24,4 @@ composer install --no-dev
 ./bin/console server:run
 ```
 
-Open link http://127.0.0.1:8000 in browser.
+Open printed link in browser, usually it is```http://127.0.0.1:8000```.
