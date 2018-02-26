@@ -10,7 +10,7 @@
   "logo": "https://symfony.com/images/v5/pictos/demoapp.svg?v=4",
   "success_url": "/",
   "scripts": {
-    "postdeploy": "composer install --no-dev",
+    "postdeploy": "composer install --no-dev && yarn",
     "test-setup": "composer install --no-dev",
     "test": "phpunit"
   },
