@@ -32,8 +32,6 @@
     },
     "SYMFONY_LOG": "php://stderr"
   },
-  "addons": [
-    "heroku-postgresql"
-  ],
+  "addons": [],
   "image": "heroku/php"
 }
