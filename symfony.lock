@@ -62,6 +62,9 @@
     "gitonomy/gitlib": {
         "version": "v1.0.3"
     },
+    "heroku/heroku-buildpack-php": {
+        "version": "v131"
+    },
     "justinrainbow/json-schema": {
         "version": "5.2.7"
     },
