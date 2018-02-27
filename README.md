@@ -4,7 +4,7 @@ This is WEB GUI tool to train on certifications based on [Certificationy](https:
 In addition this is example project composed from of symfony flex with webpack and vue.
 
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=certificationy-web)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=certificationy-web)](https://certificationy-web.herokuapp.com/)
 
  ## Requirements
  
