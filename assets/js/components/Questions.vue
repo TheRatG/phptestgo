@@ -1,14 +1,17 @@
 <template>
-    <v-flex xs12>
-        <v-card>
-            <v-form ref="form">
+    <v-flex>
+        <v-form ref="form">
+            <v-card>
                 <template v-for="(question, index) in questions">
                     <app-question ref="refQuestion" :question="question" :index="index+1"/>
+                    <v-divider v-if="index + 1 < questions.length"/>
                 </template>
-                <v-btn @click="submit">submit</v-btn>
-                <v-btn @click="clear">clear</v-btn>
-            </v-form>
-        </v-card>
+                <v-card-actions>
+                    <v-btn @click="submit">submit</v-btn>
+                    <v-btn @click="clear">clear</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-form>
     </v-flex>
 </template>
 

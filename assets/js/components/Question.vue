@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card-title>
-            <code class="headline">#{{ index }}. {{ question.question }}</code>
+            <code class="question-title">#{{ index }}. {{ question.question }}</code>
         </v-card-title>
         <v-card-text>
             <template v-for="(item, index) in question.answers">
@@ -11,6 +11,7 @@
                         :value="item.value"
                         :key="item.value"
                         :index="index"
+                        hide-details
                 />
             </template>
         </v-card-text>

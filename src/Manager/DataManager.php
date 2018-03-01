@@ -141,7 +141,8 @@ class DataManager
                 if (is_array($correctAnswersValues)
                     && is_array($questionUserAnswers)
                     && count($correctAnswersValues) == count($questionUserAnswers)
-                    && array_diff($correctAnswersValues, $questionUserAnswers) === array_diff($questionUserAnswers, $correctAnswersValues)
+                    && array_diff($correctAnswersValues, $questionUserAnswers)
+                    === array_diff($questionUserAnswers, $correctAnswersValues)
                 ) {
                     $correct = true;
                     $result['rightCount']++;
@@ -151,7 +152,10 @@ class DataManager
                 $question['userAnswers'] = $questionUserAnswers;
 
                 foreach ($question['answers'] as &$data) {
-                    $data['user'] = $data['correct'] && in_array($data['value'], $questionUserAnswers, true);
+                    $data['user'] = null;
+                    if (in_array($data['value'], $questionUserAnswers, true)) {
+                        $data['user'] = $data['correct'];
+                    }
                 }
             }
 

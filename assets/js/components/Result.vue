@@ -1,16 +1,18 @@
 <template>
     <div>
         <v-card-title>
-            <code class="headline">#{{ number }}. {{ question.question }}</code>
+            <code class="question-title">#{{ number }}. {{ question.question }}</code>
         </v-card-title>
-
-        <template v-for="(item, key) in question.answers">
-            <v-card-text>
-                <v-icon large color="green darken-2" v-if="item.user">check</v-icon>
-                <v-icon large color="red darken-2" v-if="!item.user">clear</v-icon>
-                <span :class="{correct: item.correct}">{{ item.value }}</span>
-            </v-card-text>
-        </template>
+        <v-card-text>
+            <template v-for="(item, key) in question.answers">
+                <div>
+                    <v-icon small color="" v-if="item.user === null">remove</v-icon>
+                    <v-icon small color="green" v-if="item.user !== null && item.user">check_circle</v-icon>
+                    <v-icon small color="red" v-if="item.user !== null && !item.user">error</v-icon>
+                    <span :class="{correct: item.correct}">{{ item.value }}</span>
+                </div>
+            </template>
+        </v-card-text>
     </div>
 </template>
 

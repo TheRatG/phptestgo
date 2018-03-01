@@ -1,5 +1,5 @@
 <template>
-    <v-flex xs12>
+    <v-flex>
         <v-card>
             <v-card-text>
                 <v-form v-model="valid" ref="form">

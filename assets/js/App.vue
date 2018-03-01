@@ -27,8 +27,8 @@
             <v-toolbar-title>Certymfony</v-toolbar-title>
         </v-toolbar>
         <v-content>
-            <v-container fluid>
-                <v-layout row wrap>
+            <v-container fluid fill-height>
+                <v-layout>
                     <router-view/>
                 </v-layout>
             </v-container>

@@ -1,8 +1,8 @@
 <template>
-    <v-flex xs12>
+    <v-flex>
         <v-card>
             <v-card-title primary-title="">
-                <h3 class="score">{{rightCount}} / {{totalCount}}</h3>
+                <h3 class="display-3">{{rightCount}} / {{totalCount}}</h3>
             </v-card-title>
             <v-card-actions>
                 <v-btn to="/settings">Repeat</v-btn>
@@ -11,9 +11,10 @@
         </v-card>
         <v-divider/>
         <v-card v-if="explore">
-            <div v-for="(question, index) in questions">
+            <template v-for="(question, index) in questions">
                 <app-result ref="refResult" :question="question" :number="index+1"/>
-            </div>
+                <v-divider v-if="index + 1 < questions.length"/>
+            </template>
         </v-card>
     </v-flex>
 </template>
