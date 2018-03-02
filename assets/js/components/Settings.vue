@@ -1,8 +1,13 @@
 <template>
     <v-flex>
-        <v-card>
-            <v-card-text>
-                <v-form v-model="valid" ref="form">
+        <v-card color="indigo lighten-3" class="white--text">
+            <v-card-title primary-title>
+                <h3 class="headline mb-0">Settings</h3>
+            </v-card-title>
+        </v-card>
+        <v-form v-model="valid" ref="form">
+            <v-card>
+                <v-card-text>
                     <v-text-field
                             label="Question count"
                             v-model="questionCount"
@@ -10,10 +15,14 @@
                             :counter="10"
                             required
                     />
+                    <v-checkbox
+                            label="Hide the information that questions are/aren't multiple choice"
+                            v-model="hideMultipleChoice"
+                    />
+                    <div class="title">Packs</div>
                     <div v-for="(categories, packName) in packs">
-                        <h2>{{ packName }}</h2>
                         <v-select
-                                label="Categories"
+                                :label="packName"
                                 v-bind:items="categories"
                                 v-model="selectedCategories"
                                 item-text="name"
@@ -37,16 +46,13 @@
                             </template>
                         </v-select>
                     </div>
-                    <v-btn
-                            @click="submit"
-                            :disabled="!valid"
-                    >
-                        submit
-                    </v-btn>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn @click="submit" :disabled="!valid">submit</v-btn>
                     <v-btn @click="clear">clear</v-btn>
-                </v-form>
-            </v-card-text>
-        </v-card>
+                </v-card-actions>
+            </v-card>
+        </v-form>
     </v-flex>
 </template>
 
@@ -58,6 +64,7 @@
             valid: false,
             selectedCategories: [],
             questionCount: 10,
+            hideMultipleChoice: true,
             questionCountRules: [
                 v => {
                     return !!v || 'Question count is required';
@@ -70,6 +77,7 @@
 
             this.questionCount = this.$store.getters.questionCount;
             this.selectedCategories = this.$store.getters.selectedCategories;
+            this.hideMultipleChoice = this.$store.getters.hideMultipleChoice;
         },
         methods: {
             submit() {
@@ -77,7 +85,8 @@
                     this.$store.dispatch(
                         'updateSettings', {
                             'questionCount': this.questionCount,
-                            'selectedCategories': this.selectedCategories
+                            'selectedCategories': this.selectedCategories,
+                            'hideMultipleChoice': this.hideMultipleChoice
                         }
                     );
                     this.$router.push('questions');

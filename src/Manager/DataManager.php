@@ -138,6 +138,9 @@ class DataManager
                 $result['totalCount']++;
                 $correctAnswersValues = $question['correctAnswersValues'];
                 $questionUserAnswers = isset($userAnswers[$index]) ? $userAnswers[$index] : [];
+                if (is_scalar($questionUserAnswers)) {
+                    $questionUserAnswers = [$questionUserAnswers];
+                }
                 if (is_array($correctAnswersValues)
                     && is_array($questionUserAnswers)
                     && count($correctAnswersValues) == count($questionUserAnswers)

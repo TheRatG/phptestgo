@@ -1,5 +1,10 @@
 <template>
     <v-flex>
+        <v-card color="indigo lighten-3" class="white--text">
+            <v-card-title primary-title>
+                <h3 class="headline mb-0">Results</h3>
+            </v-card-title>
+        </v-card>
         <v-card>
             <v-card-title primary-title="">
                 <h3 class="display-3">{{rightCount}} / {{totalCount}}</h3>
