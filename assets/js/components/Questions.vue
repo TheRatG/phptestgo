@@ -1,9 +1,17 @@
 <template>
     <v-flex>
+        <v-card color="indigo lighten-3" class="white--text">
+            <v-card-title primary-title>
+                <h3 class="headline mb-0">Questions</h3>
+            </v-card-title>
+        </v-card>
         <v-form ref="form">
             <v-card>
                 <template v-for="(question, index) in questions">
-                    <app-question ref="refQuestion" :question="question" :index="index+1"/>
+                    <app-question
+                            ref="refQuestion" :question="question"
+                            :index="index+1"
+                    />
                     <v-divider v-if="index + 1 < questions.length"/>
                 </template>
                 <v-card-actions>

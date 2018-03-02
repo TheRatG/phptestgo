@@ -33,7 +33,7 @@
                 </v-layout>
             </v-container>
         </v-content>
-        <v-footer color="indigo" app>
+        <v-footer color="indigo" dark app>
             <span class="white--text">&copy; <a href="https://github.com/TheRatG/certificationy-web" target="_blank">TheRatG</a> {{ new Date().getFullYear() }}</span>
         </v-footer>
     </v-app>

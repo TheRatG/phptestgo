@@ -1,54 +1,51 @@
 <template>
     <v-flex>
+        <v-card color="indigo lighten-3" class="white--text">
+            <v-card-title primary-title>
+                <h3 class="headline mb-0">Settings</h3>
+            </v-card-title>
+        </v-card>
         <v-form v-model="valid" ref="form">
             <v-card>
                 <v-card-text>
-                    <v-layout row wrap>
-                        <v-flex xs12 sm3>
-                            <div class="title">General</div>
-                            <v-subheader class="subheading">Question count <span color="red">*</span></v-subheader>
-                            <div class="title">Categories</div>
-                            <template v-for="(categories, packName) in packs">
-                                <v-subheader class="subheading">{{ packName }}</v-subheader>
-                            </template>
-                        </v-flex>
-                        <v-flex xs12 sm9>
-                            <v-text-field
-                                    v-model="questionCount"
-                                    :rules="questionCountRules"
-                                    :counter="10"
-                                    required
-                                    flat
-                            />
-                            <div v-for="(categories, packName) in packs">
-                                <v-select
-                                        label=""
-                                        v-bind:items="categories"
-                                        v-model="selectedCategories"
-                                        item-text="name"
-                                        item-value="key"
-                                        multiple
-                                        multi-line
-                                        chips
-                                        max-height="auto"
-                                        autocomplete
-                                        hide-details
+                    <v-text-field
+                            label="Question count"
+                            v-model="questionCount"
+                            :rules="questionCountRules"
+                            :counter="10"
+                            required
+                    />
+                    <v-checkbox
+                            label="Hide the information that questions are/aren't multiple choice"
+                            v-model="hideMultipleChoice"
+                    />
+                    <div class="title">Packs</div>
+                    <div v-for="(categories, packName) in packs">
+                        <v-select
+                                :label="packName"
+                                v-bind:items="categories"
+                                v-model="selectedCategories"
+                                item-text="name"
+                                item-value="key"
+                                multiple
+                                multi-line
+                                chips
+                                max-height="auto"
+                                autocomplete
+                        >
+                            <template slot="selection" slot-scope="data">
+                                <v-chip
+                                        close
+                                        @input="data.parent.selectItem(data.item)"
+                                        :selected="data.selected"
+                                        class="chip--select-multi"
+                                        :key="data.item.id"
                                 >
-                                    <template slot="selection" slot-scope="data">
-                                        <v-chip
-                                                close
-                                                @input="data.parent.selectItem(data.item)"
-                                                :selected="data.selected"
-                                                class="chip--select-multi"
-                                                :key="data.item.id"
-                                        >
-                                            {{ data.item.name }}
-                                        </v-chip>
-                                    </template>
-                                </v-select>
-                            </div>
-                        </v-flex>
-                    </v-layout>
+                                    {{ data.item.name }}
+                                </v-chip>
+                            </template>
+                        </v-select>
+                    </div>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn @click="submit" :disabled="!valid">submit</v-btn>
@@ -67,6 +64,7 @@
             valid: false,
             selectedCategories: [],
             questionCount: 10,
+            hideMultipleChoice: true,
             questionCountRules: [
                 v => {
                     return !!v || 'Question count is required';
@@ -79,6 +77,7 @@
 
             this.questionCount = this.$store.getters.questionCount;
             this.selectedCategories = this.$store.getters.selectedCategories;
+            this.hideMultipleChoice = this.$store.getters.hideMultipleChoice;
         },
         methods: {
             submit() {
@@ -86,7 +85,8 @@
                     this.$store.dispatch(
                         'updateSettings', {
                             'questionCount': this.questionCount,
-                            'selectedCategories': this.selectedCategories
+                            'selectedCategories': this.selectedCategories,
+                            'hideMultipleChoice': this.hideMultipleChoice
                         }
                     );
                     this.$router.push('questions');
