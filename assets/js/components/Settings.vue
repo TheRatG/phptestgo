@@ -23,7 +23,7 @@
                     <div v-for="(categories, packName) in packs">
                         <v-select
                                 :label="packName"
-                                v-bind:items="categories"
+                                :items="categories"
                                 v-model="selectedCategories"
                                 item-text="name"
                                 item-value="key"

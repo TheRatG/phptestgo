@@ -68,7 +68,7 @@
         created() {
             const self = this;
 
-            if (!this.questionCount || !this.selectedCategories.length) {
+            if (!this.questionCount) {
                 this.$router.push('settings');
             } else {
                 axios
@@ -90,7 +90,3 @@
         components: {appQuestion: appQuestion}
     }
 </script>
-
-<style scoped>
-
-</style>

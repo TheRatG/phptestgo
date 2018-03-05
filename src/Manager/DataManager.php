@@ -94,15 +94,20 @@ class DataManager
         $result = [];
         foreach ($this->sources as $source) {
             $packName = basename(dirname($source));
+            $loader = new YamlLoader([$source]);
 
             $categories = [];
-            foreach ($selectedCategories as $selectedCategory) {
-                if ($selectedCategory['pack'] === $packName) {
-                    $categories[] = $selectedCategory['name'];
+            if (!$selectedCategories) {
+                $categories = $loader->categories();
+            } else {
+                foreach ($selectedCategories as $selectedCategory) {
+                    if ($selectedCategory['pack'] === $packName) {
+                        $categories[] = $selectedCategory['name'];
+                    }
                 }
             }
+
             if ($categories) {
-                $loader = new YamlLoader([$source]);
                 $questions = $loader->load($nbQuestions, $categories);
                 if ($questions->count()) {
                     $serializer = new Serializer([new ObjectNormalizer()]);
