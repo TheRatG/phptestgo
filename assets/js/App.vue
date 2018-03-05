@@ -24,7 +24,7 @@
         </v-navigation-drawer>
         <v-toolbar color="indigo" dark fixed app>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
-            <v-toolbar-title>Certymfony</v-toolbar-title>
+            <v-toolbar-title>PHP Test Go</v-toolbar-title>
         </v-toolbar>
         <v-content>
             <v-container fluid fill-height>
@@ -34,7 +34,7 @@
             </v-container>
         </v-content>
         <v-footer color="indigo" dark app>
-            <span class="white--text">&copy; <a href="https://github.com/TheRatG/certificationy-web" target="_blank">TheRatG</a> {{ new Date().getFullYear() }}</span>
+            <span class="white--text">&copy; <a href="https://github.com/TheRatG/phptestgo" target="_blank">TheRatG</a> {{ new Date().getFullYear() }}</span>
         </v-footer>
     </v-app>
 </template>

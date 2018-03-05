@@ -1,10 +1,10 @@
-# Certificationy Web
+# phptestgo
 
-This is WEB GUI tool to train on certifications based on [Certificationy](https://github.com/certificationy).
+This is WEB GUI tool to train on certifications based on [certificationy](https://github.com/certificationy).
 In addition this is example project composed from of symfony flex with webpack and vue. 
-[Demo](https://certificationy-web.herokuapp.com/)
+[Demo](https://phptestgo.herokuapp.com/)
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=certificationy-web)](https://certificationy-web.herokuapp.com/)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=phptestgo)](https://phptestgo.herokuapp.com/)
 
 ## Requirements
  
@@ -16,9 +16,10 @@ In addition this is example project composed from of symfony flex with webpack a
 ## Installation
 
  ```bash
-git clone https://github.com/TheRatG/certificationy-web.git
-cd certificationy-web
-composer install --no-dev
+git clone git@github.com:TheRatG/phptestgo.git
+cd phptestgo
+composer install
+yarn
 ```
 
 ## Run
