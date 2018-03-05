@@ -21,6 +21,12 @@
                     />
                     <div class="title">Packs</div>
                     <div v-for="(categories, packName) in packs">
+                        <v-btn flat outline icon color="teal" @click="selectAll(packName)">
+                            <v-icon>select_all</v-icon>
+                        </v-btn>
+                        <v-btn flat outline icon color="red" @click="clearAll(packName)">
+                            <v-icon>clear_all</v-icon>
+                        </v-btn>
                         <v-select
                                 :label="packName"
                                 :items="categories"
@@ -94,6 +100,34 @@
             },
             clear() {
                 this.$refs.form.reset()
+            },
+            selectAll(pack) {
+                let self = this,
+                    newSelectedCategories = [];
+                if (pack in self.packs) {
+                    newSelectedCategories = self.packs[pack];
+
+                    this.selectedCategories.forEach(function (item) {
+                        if (item['pack'] !== pack) {
+                            newSelectedCategories.push(item);
+                        }
+                    });
+
+                    this.selectedCategories = newSelectedCategories;
+                }
+            },
+            clearAll(pack) {
+                let self = this,
+                    newSelectedCategories = [];
+                if (pack in self.packs) {
+                    this.selectedCategories.forEach(function (item) {
+                        if (item['pack'] !== pack) {
+                            newSelectedCategories.push(item);
+                        }
+                    });
+
+                    this.selectedCategories = newSelectedCategories;
+                }
             }
         }
     }
