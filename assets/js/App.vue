@@ -35,6 +35,21 @@
         </v-content>
         <v-footer color="indigo" dark app>
             <span class="white--text">&copy; <a href="https://github.com/TheRatG/phptestgo" target="_blank">TheRatG</a> {{ new Date().getFullYear() }}</span>
+            <v-fab-transition>
+                <v-btn
+                        fab
+                        dark
+                        fixed
+                        bottom
+                        right
+                        color="red"
+                        v-scroll="onScroll"
+                        v-show="fab"
+                        @click="toTop"
+                >
+                    <v-icon>keyboard_arrow_up</v-icon>
+                </v-btn>
+            </v-fab-transition>
         </v-footer>
     </v-app>
 </template>
@@ -42,6 +57,7 @@
 <script>
     export default {
         data: () => ({
+            fab: false,
             drawer: null,
             routes: []
         }),
@@ -52,6 +68,23 @@
             this.$router.options.routes.forEach(route => {
                 this.routes.push(route)
             });
+        },
+        mounted() {
+            this.onScroll()
+        },
+        methods: {
+            onScroll() {
+                if (typeof window === 'undefined') {
+                    return;
+                }
+                const top = window.pageYOffset
+                    || document.documentElement.offsetTop
+                    || 0;
+                this.fab = top > 300
+            },
+            toTop() {
+                window.scrollTo(0, 0)
+            }
         }
     }
 </script>
