@@ -1,7 +1,7 @@
 # phptestgo
 
 This is WEB GUI tool to train on certifications based on [certificationy](https://github.com/certificationy).
-In addition this is example project composed from of symfony flex with webpack and vue. 
+In addition this is example project composed from [symfony flex](https://symfony.com/doc/current/setup/flex.html) and [vue](https://vuejs.org/). 
 [Demo](https://phptestgo.herokuapp.com/)
 
 [![Heroku](https://heroku-badge.herokuapp.com/?app=phptestgo)](https://phptestgo.herokuapp.com/)
